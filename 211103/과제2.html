@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        let rawinput = prompt("inch 입력") 
+        console.log(`1번 문제:${rawinput*2.54}cm`)
+
+        let rawinput2= prompt(" cm입력")
+        console.log(`2번 문제:${rawinput*0.393701}inch`)
+
+        let rawinput3= prompt(" 원의 반지름 입력")
+        const PI=3.14
+        console.log(`3번 문제: 원의둘레:${rawinput3*PI*2}`)
+        console.log(`3번 문제: 원의넓이:${rawinput3*rawinput3*PI}`)
+
+        let rawinput4= prompt("달러 입력")
+        const dollor=1207
+        console.log(`4번 문제:${(Number(rawinput4)*dollor)}원`)
+
+        let rawinput5= prompt("태어난 연도 입력")
+        let a= "갑을병정무기경신임계"
+        let b= "자축인묘진사오미신유술해"
+        const gan= rawinput5%10
+        const ji= rawinput5%12
+        console.log(gan)
+        console.log(ji)
+        console.log(`5번 문제:${a[(gan-4)]+b[(ji+8)]}년`)
+
+        // if((ji-8)<0)
+        // consol.log((ji-8)+10)
+        
+        
+       
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

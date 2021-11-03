@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        alert("2"==2) //true
+        alert("2"+2) //22가 나옴
+        alert("2"===2)//false
+        alert(2===2)  //true
+
+        // == : 안에 들어있는 값만 같으면 ok
+        // === : 타입이랑 값까지 모두 같아야함.
+        // 자바스크립트는 자료형 의미x, 엄밀히 비교하고싶다면 ===사용하기.
+
+        //bool 타입은 아니지만 false로 간주하는 것들
+
+        console.log("false인 것들의 모음집")
+        console.log(Boolean(0))
+        console.log(Boolean(NaN)) //NaN: Not a Number: 숫자가 아니다.
+        console.log(Boolean(''))
+        console.log(Boolean(null))
+        console.log(Boolean(undefined)) //잘못된 연산할 때 나옴
+        console.log(Boolean(false))
+        
+        console.log("확인해보기")
+        console.log(Boolean('0')) //공백이아닌 문자열임 -> true
+        console.log(String(Number("문자열"))) //문자열을 숫자로 변환불가 -> NaN
+        // String 빼도 NaN,
+        console.log(Boolean(String(Number("문자열"))))//NaN자체는 false -> false
+        console.log(Boolean((Number("문자열"))))
+
+
+        //문자열의 길이
+
+        let a = "짜증난다 증말.."
+        console.log(a.length) //길이가 나옴
+          //문자열 각 글자별로 접근 가능
+        console.log(a[3]) // 4번째 글자 찍힘(첫째 글자 [0])
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

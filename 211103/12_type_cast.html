@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log("273"-10) // 263
+        console.log("273"+10) // 27310, 문자열로써 더함
+        console.log("273"-"abc") // NaN: 숫자아님
+        console.log(Number("273")-10) //263
+        console.log(Number("273")+10) //283
+        // 명확하게 숫자로 바꾼다음 연산 원한다면 위 방법 사용.
+
+        let input = prompt("입력")
+        alert(typeof(input))
+        alert(input+100) 
+        alert(Number(input)+100)
+        // 빼기는 연산ok, 더하기는 type을 명확히 해줘야 원하는 결과얻기 가능
+        // 더하기는 문자열, 숫자일 때 연산 다름
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
