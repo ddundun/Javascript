@@ -5,8 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
-    
+    <img id = "myImg">
+    <script>
+        let myImage = document.getElementById('myImg')
+        let myImage2 = document.querySelector('#myImg')
+        let input = prompt("출생년도입력")
+
+        if (input>100) {
+            
+            myImage.src= "https://picsum.photos/id/684/600/400"
+        }
+
+        
+        else{
+            myImage.src= `그림/${input}.png`
+        }
+    </script>
 </body>
 </html>
