@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Myadd()
+        {
+            let one = document.querySelector("#one").value
+            let two = document.querySelector("#two").value
+            let three = document.querySelector("#three").value
+            let four = document.querySelector("#four").value
+            let five = document.querySelector("#five").value
+       
+            alert(Number(one)+Number(two)+Number(three)+Number(four)+Number(five))
+
+        }
+
+        function MyMul()
+        {
+            // nth-child와 nth-of-type의 차이점:
+            // nth-child: 순서가 중요함/
+            // 만약 input:nth-child(1)이 input이 아니면 선택안됨
+            // nth-of-type: type이 중요함(태그자체가 중요)
+            // input태그들 중 몇번째이다.
+            let one = document.querySelector("input:nth-child(1)")//가장 첫번째 input태그 
+            let two = document.querySelector("input:nth-of-type(2)")
+            let three = document.querySelector("input:nth-of-type(3)")
+            let four = document.querySelector("input:nth-of-type(4)")
+            let five = document.querySelector("input:nth-of-type(5)")
+
+            let myarr = [one,two,three]
+            myarr[3] = four
+            myarr[4] = five
+
+            let sum=1 //곱하기기때문에 1! 0이면안됨~
+            for(let i in myarr)
+                sum *= Number(myarr[i].value)
+            alert(sum)
+
+
+            // querySelector : 선택자 통해서 태그 선택, 무조건 하나의 태그만 선택
+            // querySelectorAll : 선택자에 해당하는 모든 태그를 다 선택함ㄴ
+            
+            sum=1
+            let myarr2 = document.querySelectorAll("input")
+            for(let j in myarr2)
+                {
+                    //myarr2가지고 반복문 돌리다가 값이 숫자가아닌 것을 만나면 반복문 종료
+                    //isNaN : 태그에 있는 값이 숫자가 아닌지 여부를 체크함.
+                    if(isNaN(myarr[j].value))
+                        break;
+                    sum *= Number(myarr2[j].value)
+                }
+            alert(sum)
+
+            //일반적인 for문써도됨
+            sum = 1
+            for (let i =0; i<myarr2.length; i++) 
+                sum*= Number(myarr2[i].value)
+            alert(sum)    
+            
+            //for of 라는 것도 있음 : 요소만 불러내기좋다
+            sum = 1
+            for (let item of myarr2) 
+            // item : myarr2배열에 있는 요소들
+            {
+                sum *= Number(item.value)
+
+            }
+            alert(sum)
+        } 
+    </script>
+    
+</head>
+<body>
+    <input type="text" id = "one">
+    <input type="text" id = "two">
+    <input type="text" id = "three">
+    <input type="text" id = "four">
+    <input type="text" id = "five">
+
+    <button onclick="Myadd()">숫자들의 합</button>
+        <!-- 반복문 배열사용 -->
+    <button onclick="MyMul()">숫자들의 곱</button> 
+
+    
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Myadd()
+        {
+            // id가 one인 태그의 '값'을 가져옴 ->
+            // 여기선 input태그의 텍스트박스안의 값
+            // getelementbyid = queryselector("#")
+            let one = document.getElementById("one").value
+            let two = document.querySelector("#two").value
+
+            let myinput = [one,two]
+            let myinput2 = []
+            myinput[0] = one
+            myinput[1] = two
+        
+
+            //value는 문자열이므로, 이 문자열들을 숫자로 바꿔서 더해주어야함.
+            alert(Number(one)+ Number(two))
+        }
+    </script>
+    
+</head>
+<body>
+    <input type="text" id="one">
+    <input type="text" id="two">
+    <button onclick="Myadd()">클릭</button>
+    
+<!-- body에 script주고싶으면 .. body정의하고 안에쓰면됨 -->
+<!-- 근데 순서가 맨위로가야함..??  -->
+</body>
+</html>
