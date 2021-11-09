@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Hello() 
+        {
+            alert ("Hello World")
+        }
+
+        function test(param)
+        {
+            for (let i =0; i<3; i++)
+                param()
+        }
+
+        let a = function() //익명함수
+        {
+            alert("안녕하세용")
+        }
+
+        let myarr = [a,test]
+        myarr[0]()
+        myarr[1](a)
+
+
+        let abc= function() {
+            return '123' //값 return도 가능함
+        }
+        let myinput = abc()
+        alert(myinput)
+        // alert(abc())
+    </script>
+</head>
+<body>
+    <button onclick="Hello()">인사</button>
+    <button onclick="test(a)">test</button>
+    <button onclick="a()">a</button>
+</body>
+</html>

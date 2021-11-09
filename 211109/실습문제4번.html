@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function help() {
+            let myrandomNumber = Math.floor(Math.random()*3)
+            alert(myrandomNumber)
+        }
+        let input = document.querySelector("input:nth-of-type(1)").value
+        if (input ==1) {
+                    
+                    myImage.src= `실습문제4번/1.png`
+                }
+                else if (input==2) 
+                {
+                
+                    myImage.src= `실습문제4번/2.png`
+                }
+    
+                else if (input==3){
+        
+                    myImage.src= `실습문제4번/3.png`
+                }
+    </script>
+</head>
+<body>
+
+    <input type="text" id="input">
+    <button onclick="help()">가위바위보</button>
+    <br>
+    <img id = "myImg">
+</body>
+</html>
+<!-- 경우의 수는 9개 -->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <h1 id="oneh1">클릭</h1>
+    <h1 id="twoh1">클릭2</h1>
+    <script>
+        let mybutton = document.querySelector("#oneh1")
+        let mybutton2 = document.querySelector("#twoh1")
+
+        // 이벤트 추가
+        mybutton.onclick = function(){
+
+            alert("aaa")
+            this.style.color = 'red' //this는 mybutton의미
+        }
+
+        
+        // 이벤트 추가2
+        mybutton2.addEventListener('click', function()
+        {//mouseover등
+           this.style.backgroundColor='springgreen' 
+        })
+
+    </script>
+</body>
+</html>
