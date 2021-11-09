@@ -6,10 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        function help() {
+        let myImage = document.getElementById('myImg')
             let myrandomNumber = Math.floor(Math.random()*3)
             alert(myrandomNumber)
-        }
+                if (myrandomNumber ==0) {
+                        
+                        myImage.src= `실습문제4번/1.png`
+                    }
+                    else if (myrandomNumber ==1)
+                    {
+                    
+                        myImage.src= `실습문제4번/2.png`
+                    }
+        
+                    else if (myrandomNumber ==2){
+            
+                        myImage.src= `실습문제4번/3.png`
+                    }
+
+
+      
         let input = document.querySelector("input:nth-of-type(1)").value
         if (input ==1) {
                     
