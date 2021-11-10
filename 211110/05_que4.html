@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>포켓몬 선택</span>
+    <button>불</button>
+    <button>물</button>
+    <button>풀</button>
+    <br>
+    <span>버튼 8개 중 하나 선택</span>
+    <button>1세대</button>
+    <button>2세대</button>
+    <button>3세대</button>
+    <button>4세대</button>
+    <button>5세대</button>
+    <button>6세대</button>
+    <button>7세대</button>
+    <button>8세대</button>
+    <br>
+    <span>배틀 !</span>
+    <img>
+
+    <img>
+    <h1>최종 결과</h1>
+    <script>
+ 
+        let myresultimg = document.querySelectorAll('img')[0]
+        let pcresultimg = document.querySelectorAll('img')[1]
+        let gbb = ["fire.png","water.png","greenery.png"]
+        
+        //my_result_txt = h1태그
+        let my_result_txt
+                = document.querySelector('h1')
+        
+        const fire = 0
+        const water = 1
+        const green = 2
+        //mychoice = 이 함수를 호출한 버튼 태그
+        function fnc_result(mychoice)
+        {
+            //alert(mychoice.target.textContent)
+            let pc_choice = Math.floor(Math.random()*3)
+            pcresultimg.src = gbb[pc_choice]
+            //pc_choice = 0 가위, 1 바위, 2 보
+
+            switch (mychoice.target.textContent) {
+                case "불":
+                    //alert('나는 가위를 냈다.')
+                    myresultimg.src = gbb[fire]
+                    switch (pc_choice) {
+                        case fire://가위
+                            //alert('비김')
+                            my_result_txt.innerText = "비김"
+                            break
+                        case water:
+                            //alert('짐')
+                            my_result_txt.innerText = "짐"
+                            break
+                        case green:
+                            //alert('이김') 
+                            my_result_txt.innerText = "이김"                           
+                            break
+                        default:
+                            break
+                    }
+                    break;
+                case "물":
+                    //alert('나는 바위를 냈다.')
+                    myresultimg.src = gbb[water]
+                    switch (pc_choice) {
+                        case fire://가위
+                            my_result_txt.innerText = "이김"
+                            break
+                        case water:
+                            my_result_txt.innerText = "비김"
+                            break
+                        case green:
+                            my_result_txt.innerText = "짐"                           
+                            break
+                        default:
+                            break
+                    }
+                    break;
+                case "풀":
+                    //alert('나는 보를 냈다.')
+                    myresultimg.src = gbb[green]
+                    switch (pc_choice) {
+                        case fire://가위
+                            my_result_txt.innerText = "짐"
+                            break
+                        case water:
+                            my_result_txt.innerText = "이김"
+                            break
+                        case green:
+                            my_result_txt.innerText = "비김"                           
+                            break
+                        default:
+                            break
+                    }
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+        let mybuttons = document.querySelectorAll('button')
+        for(let item of mybuttons)
+            item.onclick = fnc_result;
+    </script>
+</body>
+</html>

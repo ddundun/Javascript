@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <button>가위</button>
+    <button>바위</button>
+    <button>보</button>
+    <br>
+    <span>나의 결과</span>
+    <img>
+    <span>컴퓨터의 결과</span>
+    <img>
+    <h1>최종 결과</h1>
+    <script>
+        // 가위:"2.png"
+        // 바위:"1.png"
+        // 보:"3.png"
+
+        let myresultimg = document.querySelectorAll('img')[0]
+        let pcresultimg = document.querySelectorAll('img')[1]
+        let gbb = ["1.png","2.png","3.png"]
+
+        let my_result_txt= document.querySelector('h1') //이너텍스트값 = 마이리저트텍스트하면 마이리저트텍스트가 스트링이됨.
+        // my_result_txt = h1태그가되야함
+        const gawi = 0
+        const bawi = 1
+        const  bho = 2
+
+        function fnc_result(mychoice) {
+            // alert(mychoice.target.textContent)    
+            let pc_choice = Math.floor(Math.random()*3) //012
+            pcresultimg.src =gbb[pc_choice]
+            //pc_choice = 0가위 1바위 2보
+  
+            switch (mychoice.target.textContent) {
+             case "가위" :
+                myresultimg.src=gbb[gawi]
+                // switch (pcresultimg) {
+                //     case "가위":
+                //         myresultimg.src=gbb[1]
+                //         break;
+                //     case "바위":
+                //         myresultimg.src=gbb[0]
+                //         break;                
+                //     case "보":
+                //         myresultimg.src=gbb[2]
+                //         break;        
+                
+                //     default:
+                //         break;
+                switch (pc_choice) {
+                        case gawi://가위
+                            // alert('비김')
+                            my_result_txt.innerText ="비김"
+                            break
+                        case bawi:
+                            // alert('짐')
+                            my_result_txt.innerText ="짐"
+                            break
+                        case bho:
+                            // alert('이김')  
+                            my_result_txt.innerText ="이김"                          
+                            break
+                        default:
+                            break
+                    }
+                    break;
+                case "바위":
+                    //alert('나는 바위를 냈다.')
+                    myresultimg.src = gbb[bawi]
+                    break;
+                case "보":
+                    //alert('나는 보를 냈다.')
+                    myresultimg.src = gbb[bho]
+                    break;
+            
+                default:
+                    break;
+                }
+        }
+        let mybuttons = document.querySelectorAll('button')
+        for (let item of mybuttons)
+            item.onclick = fnc_result;
+
+    </script>
+    
+</body>
+</html>

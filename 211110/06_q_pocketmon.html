@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="p"id ="fire">불</button>
+    <button class="p"id ="water">물</button>
+    <button class="p"id ="leap">풀</button>
+    <br>
+    <!-- button태그,class명 g, i는 1~8,text는 1세대~8세대 -->
+    <!-- button.g#${$세대}*8 -->
+    <button class="g" id="1">1세대</button>
+    <button class="g" id="2">2세대</button>
+    <button class="g" id="3">3세대</button>
+    <button class="g" id="4">4세대</button>
+    <button class="g" id="5">5세대</button>
+    <button class="g" id="6">6세대</button>
+    <button class="g" id="7">7세대</button>
+    <button class="g" id="8">8세대</button>
+    <br><br>
+    <button id="p_battle">배틀 시작</button>
+
+    <h1>결과는 ?</h1>
+    <h1 id= "my_battle_result"></h1>
+    <h1>나의 포켓몬</h1>
+    <img id="me">
+    <h1>상대의 포켓몬</h1>
+    <img id="pc">
+
+    <script>
+        let my_type = "-"
+        let my_gen ="-"
+        const fire =0
+        const water =1
+        const leap =2
+        let type =[]
+        type[fire] = "fire.png"
+        type[water]= "water.png"
+        type[leap]= "greenery.png"
+        type[3]= "1.png" // 왜졌는지 표현하기위한것 ->젤약한애
+
+        function choiceType (choice_type) {
+            // 내가 클릭한 그 버튼의 id값을 my_type에 넘김
+            my_type=choice_type.target.id;
+            // alert(my_type)
+        }
+
+        function choiceGen(choice_gen) {
+            // 내가 클릭한 그 버튼의 id값을 my_gen에 넘김
+            my_gen =choice_gen.target.id;
+            // alert(my_gen)
+        }
+
+        function battle() {
+            if (my_gen == "-" || my_type =="-")
+            {
+                alert(" 세대나 타입 선택하세요.")
+                return //return치면 다시??
+            }
+            
+            let me = document.querySelector("#me")
+            let pc = document.querySelector("#pc")
+
+            let pc_type = Math.floor(Math.random()*3) 
+            let pc_gen =  Math.floor(Math.random()*8)+1 //1부터시작하게할ㄹㅏ꼬
+
+            let my_battle_result
+                = document.querySelector("#my_battle_result")
+            
+            if( pc_gen ==2 && pc_type ==leap)
+                pc.src = type[3]
+            else 
+                pc.src = type[pc_type]
+            
+            switch (my_type) {
+                case 'fire':
+                     me.src= type[fire]
+                     switch (pc_type) {
+                        case fire:
+                             my_battle_result.innerText = "무승부"
+                             break;
+                        case water:
+                            my_battle_result.innerText = "패배"
+                             break;
+                        case leap:
+                            
+                            my_battle_result.innerText = "승리"
+                             break;
+                     
+                         default:
+                             break;
+                     }
+                    break;
+                case 'water':
+                     me.src= type[water]
+                     switch (pc_type) {
+                        case fire:
+                             my_battle_result.innerText = "승리"
+                             break;
+                        case water:
+                            my_battle_result.innerText = "무승부"
+                             break;
+                        case leap:
+                            if (pc_gen ==2 )
+                            {
+
+                            }
+                            my_battle_result.innerText = "패배"
+                             break;
+                     
+                         default:
+                             break;
+                     }
+                    break;
+                case 'leap':
+                    if(my_gen ==2)
+                        me.src= type[3]
+                    else
+                        me.src= type[leap]
+                        switch (pc_type) {
+                        case fire:
+                             my_battle_result.innerText = "패배"
+                             break;
+                        case water:
+                            my_battle_result.innerText = "승리"
+                             break;
+                        case leap:
+                            if(pc_gen ==2 &&my_gen ==2){
+                                my_battle_result.innerText ="무승부"
+                            }
+                            else if (pc_gen ==2&&my_gen!=2)
+                            {
+                                my_battle_result.innerText = "승리(치코)"}
+                            else
+                            {
+                                
+                            }
+
+                             break;
+                     
+                         default:
+                             break;
+                     }
+                    break;            
+
+                default:
+                    break;
+            }
+            // me.src= type[my_type]
+            // pc.src= type[pc_gen]
+
+        }
+
+        let p_types = document.querySelectorAll(".p")// 클래스명이 p인 친구들
+        for(let item of p_types)
+            item.onclick = choiceType
+            
+        let gens = document.querySelectorAll(".g")// 클래스명이 g인 친구들
+        for(let item of gens)
+            item.onclick = choiceGen
+        
+        let p_battle = document.querySelector("#p_battle")
+        p_battle.onclick = battle
+            
+    </script>
+</body>
+</html>
