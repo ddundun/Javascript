@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Mystudent(name,age) // 함수를 만들었다생각하지만 함수x
+        { //this 
+            this.name = name
+            this.age = age
+            this.Study = function() {
+                console.log(name+'학생 등록완료')
+                // alert(this.name +'학생 등록완료')
+            }
+        }
+        function Mystudent2(name,age) // 함수를 만들었다생각하지만 함수x
+        {
+            return {
+                name :name,
+                age = age,
+                Study : function()
+                {
+                    alert (name+'학생 등록 완료')
+                }
+            }
+      
+        }
+    </script>
+</head>
+<body>
+    이름 : <input type="text"> <br>
+    나이 : <input type="text"> <br>
+
+    <h1> 학생명 : </h1>
+    <h1> 태어난 연도 : </h1>
+
+    <button>학생이름 & 태어난 연도 출력</button>
+    <script>
+        let name = document.querySelectorAll('input')[0]
+        let age = document.querySelectorAll('input')[1]
+
+        let mybtn = document.querySelector('button')
+        let myname = document.querySelectorAll('h1')[0]
+        let myyear = document.querySelectorAll('h1')[1]
+
+        // // mybtn.onclick = function() 
+        // { //함수 호출 시 앞에 new를 붙이게 되면 ,객체를 생성시켜주는 코드가 변함(가?로?)
+        //     let dj = new Mystudent(name.value,age.value) 
+        //     console.log(dj)
+        //     //초기화
+        //     myname.innerText = "학생명 : "
+        //     myyear.innerText = "태어난 연도 : "
+
+        //     myname.innerText += dj.name 
+        //     myyear.innerText += 2022- Number(dj.age)
+        //     dj.Study()
+        // }
+
+        let studnets = [] //배열선언
+        mybtn.onclick = function() 
+        { //함수 호출 시 앞에 new를 붙이게 되면 ,객체를 생성시켜주는 코드가 변함(가?로?)
+            let dj = Mystudent2(name.value,age.value) 
+            console.log(dj)
+            //초기화
+            myname.innerText = "학생명 : "
+            myyear.innerText = "태어난 연도 : "
+
+            myname.innerText += dj.name 
+            myyear.innerText += 2022- Number(dj.age)
+            dj.Study()
+            studnets.push(dj) // 
+            console.log(studnets) //
+        }
+    </script>
+</body>
+</html>

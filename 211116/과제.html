@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function MyStudent(name, age, num)
+        {
+            this.name = name
+            this.age = age
+            this.num = num
+            this.Study = function()
+            {
+                alert(this.name +' 학생 등록완료')
+                
+            }
+            this.Study2 = function()
+            {
+                alert(this.num+'번'+this.age+'살'+this.name+'학생입니다.')
+            }
+    
+        }
+
+    </script>
+</head>
+<body>
+    이름: <input type="text"> <br>
+    나이: <input type="text"> <br>
+    번호: <input type="text"> <br>
+
+    <button>학생등록</button>
+    <button>학생조회</button>
+    <button>학생수정</button>
+    <button>학생삭제</button>
+    <button>전체</button>
+
+
+    <script>
+        let name = document.querySelectorAll('input')[0]
+        let age = document.querySelectorAll('input')[1]
+        let num = document.querySelectorAll('input')[2]
+
+        let mybtn1 = document.querySelectorAll('button')[0]
+        let mybtn2 = document.querySelectorAll('button')[1]
+        let mybtn3 = document.querySelectorAll('button')[2]
+        let mybtn4 = document.querySelectorAll('button')[3]
+        let mybtn5 = document.querySelectorAll('button')[4]
+
+
+
+        let students = []
+        mybtn1.onclick = function()
+        {
+
+            let dj = new MyStudent(name.value,age.value,num.value)        
+
+            dj.Study()
+            students.push(dj)
+        
+        }
+
+        mybtn2.onclick = function( ){
+            let dj = new MyStudent(name.value,age.value,num.value)        
+
+            dj.Study2()
+           
+
+        }
+
+        mybtn4.onclick = function() {
+            let del = Number(prompt("삭제할 번호 입력 !"))
+            students.splice(del-1,del)
+        }
+        mybtn5.onclick = function() {
+           
+            console.log(students)
+        }
+
+       
+    </script>
+</body>
+</html>
