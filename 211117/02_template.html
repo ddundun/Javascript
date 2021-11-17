@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Mycat(n,a,c,g) 
+        {
+            this.name = n
+            this.age = a
+            this.hairColor =c
+            this.gendre = g
+            this.Speak= function () {
+                alert('야옹 내이름은'+n+'~')
+            }
+        }
+    </script>
+    <script>
+        let cat = new Mycat("나비",3,"회색","수컷")
+        let cat2 = new Mycat("얼룩이",3,"검은색","암컷")
+        let cat3 = new Mycat("고양이",3,"흰색","수컷")
+        let cats = [cat,cat2,cat3]
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

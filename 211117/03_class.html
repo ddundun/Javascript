@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class MyCat {
+            constructor(name,age,gender,hairColor) {
+                this.name = name
+                this.age = age
+                this.gender = gender 
+                this.hairColor = hairColor
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        let mycat1 = new MyCat("냥",2,"수컷","흰색")
+        let mycat2 = new MyCat("멍",2,"암컷","검은색")
+        let cats = [new MyCat("옹",12,"수컷","치즈"),new MyCat("a",1,"b","c"), new MyCat("d",2,"e","f"),mycat1]
+        
+        console.log(mycat1)
+        console.log(mycat2)
+        console.log(cats)
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let cat = '고양이'
+        cat = {
+            name: '나비',
+            age: 3,
+            hairColor: 'gray',
+            friends : ['친구1','친구2','친구3','친구4'],
+            speak : function () { alert('ㅁㅎ')
+                
+            }
+        }
+
+        let cat2 = '고양이2'
+        cat2 = {
+            name: '나비2',
+            age: 4,
+            hairColor: 'black',
+            friends : ['친구1','친구2','친구3','친구4'],
+            speak : function () { alert('?')
+                
+            }
+        }
+        console.log(cat)
+        console.log(cat.name)
+        console.log(cat.age)
+        console.log(cat.hairColor)
+    </script>
+    <script>
+        // window.onload: 창이 다 불러오진 경우 = body에 있는 내용도 전부 불러와진 경우
+        window.onload = function () {
+            // document.getElementById('name').innerText = "안녕"
+            document.getElementById('name').innerText = cat.name
+            document.querySelector('#age').innerHTML = cat.age
+            document.getElementById('hairColor').innerText = cat.hairColor
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="name"></h1>
+    <h1 id="age"></h1>
+    <h1 id="hairColor"></h1>
+</body>
+
+</html>

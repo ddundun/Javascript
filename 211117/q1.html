@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Hospital {
+            constructor(species, name, age, number, person) {
+                this.species = species
+                this.name = name
+                this.age = age
+                this.number = number
+                this.person = person
+
+                this.regist = function () {
+                    //이거써서 학생 등록된거 보여주려고함
+                    alert(this.name + '등록 완료!')
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        let animal = new Hospital("강아지", "멍멍이", 3, "1234", "이진주")
+
+        let animals = []
+        let species = prompt("동물종류")
+        let name = prompt("이름")
+        let age = prompt("동물나이")
+        let number = prompt("동물고유번호")
+        let person = prompt("주인이름")
+        let tempanimals = new Hospital(species, name, age, number, person)
+        tempanimals.regist()
+        animals.push(tempanimals)
+        console.log(animal, animals)
+        let m_create = document.querySelector('#create')
+
+
+        m_create.onclick = function () {
+            for (let item of animals) //중복 체크 및 조치
+            {
+                if (item.number == number.value) { //배열에저장된 아이템의 번호와 입력한 번호값이 같을때
+                    alert('중복 존재')
+                    return // 더이상 학생추가 수행x
+                }
+            }
+            // 중복이 아닌 경우 아래 코드 수행
+            let tempanimals = new Hospital(species.value, name.value, age.value, number.value, person.value)
+            tempanimals.regist()
+            animals.push(tempanimals)
+            console.log(animals)
+        }
+    </script>
+
+    종 : <input type="text" id="species"> <br>
+    이름 : <input type="text" id="name"> <br>
+    나이 :<input type="text" id="age"> <br>
+    고유번호 :<input type="text" id="number"> <br>
+    주인이름 : <input type="text" id="person"> <br>
+
+    <button id="create">동물 등록</button>
+</body>
+
+</html>

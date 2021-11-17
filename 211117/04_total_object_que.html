@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function MyAnimal(category, name, master, num, age) {
+            this.category = category
+            this.name = name
+            this.master = master
+            this.num = num
+            this.age = age
+            this.regist = function () {
+                alert(`${num}번 동물은 등록되었습니다.` +
+                    `(${category}, ${name}, ${master}, ${age})`)
+            }
+        }
+
+        let myanimals = []
+        for (let i = 0; i < 3; i++) {
+            let category = prompt("동물 종류")
+            let name = prompt("동물 이름")
+            let master = prompt("주인 이름")
+            let num = prompt("고유 번호")
+            let age = prompt("동물 나이")
+            myanimals[i] = new MyAnimal(category, name, master, num, age)
+            // =  myanimals.push(new MyAnimal(category, name, master, num, age))
+            myanimals[i].regist()
+        }
+        console.log(myanimals)
+    </script>
+</head>
+
+<body>
+    종 : <input type="text" id="species"> <br>
+    이름 : <input type="text" id="name"> <br>
+    나이 :<input type="text" id="age"> <br>
+    고유번호 :<input type="text" id="num"> <br>
+    주인이름 : <input type="text" id="person"> <br>
+
+    <button id="create">동물 등록</button> <br>
+    <button id="read">고유번호 조회</button> <br>
+    <button id="read2"> 이름이나 종류로 조회 </button>
+    <script>
+        let m_create = document.querySelector('#create')
+        let m_name = document.querySelector('#name')
+        let m_read = document.querySelector('#read')
+        let m_read2 = document.querySelector('#read2')
+
+
+        m_create.onclick = function () {
+            for (let item of myanimals) //중복 체크 및 조치
+            {
+                if (item.num == num.value) { //배열에저장된 아이템의 번호와 입력한 번호값이 같을때
+                    alert('중복 존재')
+                    return // 더이상 학생추가 수행x
+                }
+            }
+            // 중복이 아닌 경우 아래 코드 수행
+            let tempanimals = new MyAnimal(species.value, m_name.value, age.value, num.value, person.value)
+            tempanimals.regist()
+            myanimals.push(tempanimals)
+        }
+
+        m_read.onclick = function () {
+            for (let item of myanimals) {
+                if (num.value == item.num) {
+                    alert(`${item.num}번 동물은` + `(${item.category}, ${item.name}, ${item.master}, ${item.age})입니다`)
+                    return
+                }
+            }
+        }
+        m_read2.onclick = function () {
+            for (let item of myanimals) {
+                if (m_name.value == item.name) {
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
