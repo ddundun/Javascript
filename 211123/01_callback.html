@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [10, 5, 20, 3, 40]
+        let arr2 = ['10', '5', '20', '3', '40']
+        let arr3 = ['b', 'f', 'a', 's', 'd']
+        let orderbyNum = function(a, b) {
+            return a - b //오름차순
+        }
+        let orderbyNumDesc = (a, b) => {
+            return b - a //내림차순
+        }
+
+        console.log(arr1.sort()) //사전순
+        console.log(arr1.sort(orderbyNum)) //오름차순
+        console.log(arr1.sort(orderbyNumDesc)) //내림차순
+
+        console.log(arr2.sort()) //사전순
+        console.log(arr3.sort()) //abcd순 -> 
+    </script>
+
+</body>
+
+</html>

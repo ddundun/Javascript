@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function myconsonle(...items) {
+            console.log(items)
+        }
+        const arr = [1, 2, 3, 4]
+        myconsonle(arr) //한 개의 덩어리가 그냥 들어감
+        myconsonle(...arr) // arr에 있는 것 하나씩 집어넣음
+    </script>
+</body>
+
+</html>

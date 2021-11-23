@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test(...items) {
+            console.log(items)
+        }
+        const numbers = [11, 55, 22, 33, 99]
+        /*  v : value, 각 요소의 값
+            i : index, 인덱스
+            a : array, 배열 자체
+        */
+        numbers.forEach((v, i, a) => {
+            console.log(`${i}번째 요소: ${v}`)
+            test(...a) //배열 전체 출력
+        })
+        // 만약 array 자체가 필요 없다면 빼도 됨
+        numbers.forEach((v, i) => {
+            console.log(`${i}번째 요소: ${v}`)
+        })
+        // index도 필요없다면 
+        numbers.forEach((v) => {
+            console.log(`값: ${v}`)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ... : 전개연산자
+        // ...items : 나머지 매개변수
+        //  매개변수의 개수를 알수 없는 경우에 사용하는 함수
+        function mysum(...items) {
+            let sum = 0
+            for (let item of items) { //최신버전
+                sum += item
+            }
+            alert("총합은 " + sum + "이다.")
+        }
+
+        function oldmysum() {
+            let sum = 0
+            for (let item of arguments) { //옛날버전
+                // arguments :키워드. 매개변수로 들어온 모든 것
+                sum += item
+            }
+            alert("총합은 " + sum + "이다.")
+        }
+
+        // default 매개변수
+        function mypow(a = 1) { //매개변수에 별도의 값이 없으면 1 대입
+            alert("이 숫자의 제곱은 " + a * a + "이다.")
+        }
+
+  
+        mysum(1)
+        mysum(1, 2, 3, 4)
+        mysum(1, 100, 1000, 10)
+        oldmysum(2, 3, 4)
+        mypow()
+        mypow(5)
+    </script>
+</body>
+
+</html>
