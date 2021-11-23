@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout(()=> { // 특정 ms후에 한 번 실행
+            console.log("1초 후에 해당 함수 한 번 실행")
+        }, 1*1000)
+
+        let count = 0
+        setInterval(()=>{ // 특정 ms마다 한 번 실행
+            count++ 
+            console.log(count+"_1초에 한 번 실행")
+        },1*1000)
+    </script>
+</body>
+</html>
