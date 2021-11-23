@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // createelement('h1') : h1태그만들고 body.appendchild(a) -> body에 a삽입
+        // let myh1 =document.createElement('h1')
+        // myh1.innerText = "자바스크립트로 태그 추가"
+        // document.body.appendChild(myh1)
+
+        // 알파벳 중 하나 뽑아내는 함수
+        function nextRandomInteger(limit) {
+            return Math.round(Math.random() * limit)
+        }
+        // let randomAlphabet = () => { //함수 안에 함수가 들어있는 구조
+        //     let alphabet = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
+        //     return function () {
+        //         return alphabet.charAt(nextRandomInteger(25))
+        //     }
+        // }
+        let randomAlphabet = (function()
+        {
+            let alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            return function(){
+                return alphabet.charAt(nextRandomInteger(25))
+            }
+        })()
+        function randomSpeed(maxSpeed) { //음수아니면 양수 랜덤하게~
+            return Math.random() * maxSpeed - Math.random() * maxSpeed
+        }
+    </script>
+
+    <script>
+        let canvasWidth = 700
+        let canvasHeight = 400
+
+        // 객체 만드는 것
+        function MovingText() {
+            this.x = nextRandomInteger(canvasWidth)
+            this.y = nextRandomInteger(canvasHeight)
+
+            this.vx = randomSpeed(10)
+            this.vy = randomSpeed(10)
+
+            this.b = document.createElement('h1')
+            this.b.innerText = randomAlphabet()
+            this.b.style.position = 'fixed'
+            // 부모태그의 position이 static인경우 ->fixed나 static이나 같음(?)
+            document.b.appendChild(this.b)
+
+            this.move = function () { //0.3초에 한번씩 계속 호출
+                if (this.x < 0 || this.x > canvasWidth)
+                    this.vx *= -1
+                if (this.y < 0 || this.y > canvasWidth)
+                    this.vy *= -1
+                this.x += this.vx
+                this.y += this.vy
+
+                // 좌표 위치 조절
+                this.b.style.left = this.x + 'px'
+                this.b.style.top = this.y + 'px'
+            }
+        }
+    </script>
+    <script>
+        window.onload = function () {
+            let MovingTexts =[]
+            for (let i =0; i<100 ; i++){
+                MovingTexts.push(new MovingText())
+            }
+            setInterval(() => {
+                for(let i in MovingTexts)
+                MovingTexts[i].move()
+            }, 1000/30);
+        }
+    </script>
+</body>
+
+</html>
