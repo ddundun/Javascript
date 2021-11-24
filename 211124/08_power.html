@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 호출 시 아무것도 안적으면 n에 2가 자동으로 들어감
+        Number.prototype.power = function (n=2) { //프로토타입통해서 다적용가능(?)
+            return this.valueOf() **n
+        }
+    </script>
+    <script>
+        let a= 5
+        a= a**2 //a의2제곱
+        let myh1 = document.createElement('h1')
+        myh1.innerText = a
+        document.body.appendChild(myh1)
+
+        let myh1_2 =document.createElement('h1')
+        myh1_2.style.color = 'red'
+        myh1_2.innerText = a.power(3) //a*a*a
+        document.body.appendChild(myh1_2)
+    </script>
+</body>
+</html>

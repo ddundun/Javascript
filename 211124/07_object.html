@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let product = {
+            name :"망고",
+            type : 'fruit',
+            taste : '맛남',
+            '-': '마이너스',
+            '+': '특수문자는 키(key)값으로 사용 안됨',
+            '@': '따옴표로 감싸면 되긴함'
+        }
+        // 객체요소에 접근하는 방법 : ㅇㅇㅇ.ㅇㅇ or ㅇㅇ[]
+        alert(product.name)
+        alert(product['name'])
+        alert(product['taste'])
+        alert(product['@'])
+
+        // 새로운속성 추가하고 싶을 때
+        product.owner = '이진주'
+        console.log(product)
+        let 들여쓰기 = 5
+        console.log(JSON.stringify(product,null,들여쓰기))
+
+        delete product['@']
+        console.log(product)        // 현재상태만 나타냄. 로그볼수없삼
+        console.log(JSON.stringify(product,null,들여쓰기))
+
+        alert(typeof product)
+        let a = []
+        alert(typeof a) //object
+        alert(Array.isArray(a)) //이거 자체가 배열인지? ->true of false
+        let b = function() {} //fuction
+        alert(typeof b)
+
+    </script>
+</body>
+</html>

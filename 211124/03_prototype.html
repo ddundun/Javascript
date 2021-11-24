@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //임의의 정수값을 뽑는 함수 호출
+        function nextRandomInteger(limit) {
+            return Math.round(Math.random() * limit) //round == 반올림
+            //0이나오면 a,25나오면 z
+        }
+        let randomAlphabet = (
+            function () {
+                const alphabet = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
+                const kor = '가나다라마바사아자차카타파하'
+                const jap = 'あいうえおがぎぐげござじずぜぞ'
+
+                const lang = [alphabet, kor, jap]
+
+                return function () {
+                    //lang[0], lang[1], lang[2]
+                    const myalpha = lang[nextRandomInteger(2)] //2*0.999
+                    return myalpha.charAt(nextRandomInteger(myalpha.length - 1))
+                    // 
+                }
+            }
+        )()
+
+        function randomSpeed(maxSpeed) { //이 함수통해서 가속도 정해짐(0.03초에 한번씩)
+            return Math.random() * maxSpeed - Math.random() * maxSpeed
+        }
+    </script>
+    <script>
+        // 이 범위내에서 알파벳 움직임
+        let canvasWidth = 700 //최대 넓이
+        let canvasHeight = 400 //최대 높이
+
+        function MovingText(param) { //객체만들 것. (좌표?)
+            this.x = nextRandomInteger(canvasWidth)
+            this.y = nextRandomInteger(canvasHeight)
+
+            // vx,vy : 속도~
+            this.vx = randomSpeed(10)
+            this.vy = randomSpeed(10)
+            this.b = document.createElement('h1') //h1태그만들기~
+
+            console.log(param)
+            // undefined는 false랑 동일하게 취급
+            // 0,null,NaN,' 'lundefined같은 거 모드 false로 취급
+            
+            if(!param) //파라메터(param)가 없는경우
+                this.b.innerText = randomAlphabet()
+            else 
+                this.b.innerText = param
+
+            this.b.innerText = randomAlphabet()
+            this.b.style.position = 'fixed' //relative or static : 이동x
+
+            // appendChild없으면 body에 삽입이 안됨
+            document.body.appendChild(this.b)
+        }
+        MovingText.prototype.move = function () {
+                if (this.x < 0 || this.x > canvasWidth)
+                    // x가 음수일경우에 양수로바꿔줌 (그럼 좌우로 왔다갔다하게됨)
+                    this.vx *= -1
+                if (this.y < 0 || this.y > canvasHeight)
+                    this.vy *= -1
+
+                this.x += this.vx
+                this.y += this.vy
+
+                // 좌표 위치 조정
+                this.b.style.left = this.x + 'px'
+                this.b.style.top = this.y + 'px'
+                // this.b.style.backgroundColor = 등등 : 여기서바꾸면 생성할때만바뀜
+        }
+    </script>
+    <script>
+        window.onload = function () {
+
+            let adder = document.querySelector('button')
+            let input = document.querySelector('input')
+
+            adder.onclick =() =>{
+                movingTexts.push(new MovingText(input.value))
+            }
+
+            let movingTexts = []
+            // let mycolors = ['pink', 'springgreen', 'skyblue']
+            // let backcolor = ['yellow', 'red']
+            for (let i = 0; i < 100; i++) {
+                movingTexts.push(new MovingText())
+            }
+            //     setInterval(function () {
+            //         for (let i in movingTexts)
+            //             movingTexts[i].move()
+            //             movingTexts[i].b.style.color = `rgb(${nextRandomInteger(255)},${nextRandomInteger(255)},${nextRandomInteger(255)})`
+            //             document.body.style.backgroundColor =  `rgb(${nextRandomInteger(255)},${nextRandomInteger(255)},${nextRandomInteger(255)})`
+            //             // movingTexts[i].b.style.color=mycolors[nextRandomInteger(2)]
+            //             // document.body.style.backgroundColor=backcolor[nextRandomInteger(1)]
+            //     }, 1000 / 30) //0.03초, 33.3333ms
+            // }
+            setInterval(function () {
+                for (let i in movingTexts) {
+                    movingTexts[i].move()
+                    movingTexts[i].b.style.color =
+                        `rgb(${nextRandomInteger(255)},
+                    ${nextRandomInteger(255)},
+                    ${nextRandomInteger(255)})`
+                    document.body.style.backgroundColor =
+                        `rgb(${nextRandomInteger(255)},
+                    ${nextRandomInteger(255)},
+                    ${nextRandomInteger(255)})`
+                    //movingTexts[i].b.style.color=mycolors[nextRandomInteger(2)]
+                    //document.body.style.backgroundColor=backcolor[nextRandomInteger(1)]
+
+                }
+            }, 1000 / 30) //33.3333 ms에 한 번
+        } //0.03초에 한 번
+    </script>
+
+</head>
+<style>
+    button,input { 
+        left: 0px;
+        top: 500px;
+        position: relative;
+    }
+</style>
+
+<body>
+    <button>글자 추가</button>
+    <input type="text" name ="" id= "">
+</body>
+
+</html>

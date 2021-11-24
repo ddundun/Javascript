@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //임의의 정수값을 뽑는 함수 호출
+        function nextRandomInteger(limit) {
+            return Math.round(Math.random() * limit) //round == 반올림
+            //0이나오면 a,25나오면 z
+        }
+        let randomAlphabet = (
+            function () {
+                let alphabet = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'
+                let kor = "가나다라마바사아자차카타파하"
+                let jap = "あいうえおがぎぐげござじずぜぞ"
+                return function () {
+                    return kor.charAt(nextRandomInteger(14)) || alphabet.charAt(nextRandomInteger(25)) ||
+                            jap.charAt(nextRandomInteger(15))
+                    // charAt : 콜백함수x...? return값 있음..?
+                }
+            }
+        )() //함수를 선언하자마자 호출한 것 -> 호출되면 함수반환
+
+        function randomSpeed(maxSpeed) { //이 함수통해서 가속도 정해짐(0.03초에 한번씩)
+            return Math.random() * maxSpeed - Math.random() * maxSpeed
+        }
+    </script>
+    <script>
+        // 이 범위내에서 알파벳 움직임
+        let canvasWidth = 700 //최대 넓이
+        let canvasHeight = 400 //최대 높이
+
+        function MovingText() { //객체만들 것. (좌표?)
+            this.x = nextRandomInteger(canvasWidth)
+            this.y = nextRandomInteger(canvasHeight)
+
+            // vx,vy : 속도~
+            this.vx = randomSpeed(10)
+            this.vy = randomSpeed(10)
+            this.b = document.createElement('h1') //h1태그만들기~
+            this.b.innerText = randomAlphabet()
+            this.b.style.position = 'fixed' //relative or static : 이동x
+
+            // appendChild없으면 body에 삽입이 안됨
+            document.body.appendChild(this.b)
+
+            this.move = function () {
+                if (this.x < 0 || this.x > canvasWidth)
+                    // x가 음수일경우에 양수로바꿔줌 (그럼 좌우로 왔다갔다하게됨)
+                    this.vx *= -1
+                if (this.y < 0 || this.y > canvasHeight)
+                    this.vy *= -1
+
+                this.x += this.vx
+                this.y += this.vy
+
+                // 좌표 위치 조정
+                this.b.style.left = this.x + 'px'
+                this.b.style.top = this.y + 'px'
+
+            }
+        }
+    </script>
+    <script>
+        window.onload = function () {
+            let movingTexts = []
+            for (let i = 0; i < 100; i++) {
+                movingTexts.push(new MovingText())
+            }
+            setInterval(function () {
+                for (let i in movingTexts)
+                    movingTexts[i].move()
+            }, 1000 / 30) //0.03초, 33.3333ms
+
+            let lotto_colors = ['yellow', 'blue', 'red', 'pink', 'green']
+            let abc = document.querySelector('#h1')
+            abcde(function() {
+                for (let i = 1; i < 4; i++) { //[1]부터 [7]까지만 색칠
+                    document.querySelectorAll('#body')[i].style.backgroundColor = lotto_colors[Math.floor(
+                        Math.random() * 5)]
+
+                }                
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="text">
+    <button>글자추가</button>
+</body>
+
+</html>

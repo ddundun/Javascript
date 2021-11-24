@@ -27,7 +27,7 @@
         // }
         let randomAlphabet = (function()
         {
-            let alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            let alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             return function(){
                 return alphabet.charAt(nextRandomInteger(25))
             }
@@ -53,12 +53,12 @@
             this.b.innerText = randomAlphabet()
             this.b.style.position = 'fixed'
             // 부모태그의 position이 static인경우 ->fixed나 static이나 같음(?)
-            document.b.appendChild(this.b)
+            document.body.appendChild(this.b)
 
             this.move = function () { //0.3초에 한번씩 계속 호출
                 if (this.x < 0 || this.x > canvasWidth)
                     this.vx *= -1
-                if (this.y < 0 || this.y > canvasWidth)
+                if (this.y < 0 || this.y > canvasHeight)
                     this.vy *= -1
                 this.x += this.vx
                 this.y += this.vy
@@ -71,14 +71,19 @@
     </script>
     <script>
         window.onload = function () {
-            let MovingTexts =[]
+            let movingTexts =[]
             for (let i =0; i<100 ; i++){
-                MovingTexts.push(new MovingText())
+                movingTexts.push(new MovingText())
             }
-            setInterval(() => {
-                for(let i in MovingTexts)
-                MovingTexts[i].move()
-            }, 1000/30);
+            // setInterval(() => {
+            //     for(let i in MovingTexts)
+            //     MovingTexts[i].move()
+            // }, 1000/30);
+            setInterval(function()
+            {
+                for(let i in movingTexts)
+                    movingTexts[i].move()
+            }, 1000/30)
         }
     </script>
 </body>
