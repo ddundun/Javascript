@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{user-select: none;} /* 클릭여러번 할때 글자 선택되는 것(드래그)방지 */
+    </style>
+</head>
+
+<body>
+    <h1>
+        Lorem ipsum dolor sit amet.
+    </h1>
+    <script>
+        let counter = 0
+        let flag = false
+        const myh1 = document.querySelector('h1')
+        myh1.addEventListener('click',
+            function () {
+                if(flag==true){
+                    counter--
+                }
+                else {
+                    counter++
+                }
+                if(counter >25) {
+                    flag = true
+                }
+                else if (counter<0){
+                    flag = false
+                }
+                myh1.style.color = `rgb(${(counter*10)},0,0)`
+                // 260*10하면 255넘어감 더 빨개질수x
+            })
+        myh1.addEventListener('mouseover', function () {
+            myh1.style.backgroundColor='yellow'
+        })
+        myh1.addEventListener('mouseout', function () {
+            myh1.style.backgroundColor='white'
+        })
+    </script>
+</body>
+
+</html>
