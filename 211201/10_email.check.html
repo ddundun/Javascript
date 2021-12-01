@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded',function () {
+            const myinput = document.querySelector('input')
+            const myp = document.querySelector('p')
+            const isEmail = (value) => {
+            // isEamil : email인지 아닌지 체크하는 함수
+                return (value.indexOf('@')>1) && 
+                (value.split('@')[1].indexOf('.')>1) 
+            }
+          myinput.addEventListener('keyup',(event)=>{
+            //   event.currentTarget = input
+              const value = event.currentTarget.value
+              if( isEmail(value)) {
+                  myp.style.color = 'springgreen'
+                  myp.textContent = `이메일 형식입니다. ${value}`
+              }
+              else 
+              {
+                myp.style.color = 'red'
+                myp.textContent = `이메일 형식아닙니다. ${value}`
+              }
+          })
+        })
+    </script>
+</head>
+<body>
+    <input type="text">
+    <p></p>
+</body>
+</html>
