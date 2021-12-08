@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1:hover{color: red; cursor: pointer;}
+        h2:hover{color:blue; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <h1>history2로 이동</h1>
+    <h2>앞으로 가</h2>
+    <a href="06_history2.html">06_history2로 이동</a>
+    <script>
+        document.querySelector('h1').onclick = function () {
+            location.href = '06_history2.html'
+        }
+        document.querySelector('h2').onclick = function () {
+            // history.forward()
+            history.go(1)
+        }
+    </script>
+</body>
+</html>
