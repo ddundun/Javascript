@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        .red {
+            color: red
+        }
+
+        .blue {
+            color: blue
+        }
+
+        .border {
+            border: 2px solid black
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="first">Lorem ipsum dolor sit amet.</h1>
+    <h1 id="second">Lorem ipsum dolor sit amet.</h1>
+    <script>
+        let first = document.querySelector('#first')
+        first.setAttribute('class', 'red')
+        first.style.backgroundColor = 'yellow'
+        //    first.setAttribute('class','red border')
+        first.className += ' border'
+
+        //    제이쿼리 : 한줄에 표현가능 (주렁주렁)
+        // 인터넷안디ㅗ면 제이쿼리 사용불가
+        $('#second').addClass('blue').css('backgroundColor', 'cyan').addClass('border')
+    </script>
+</body>
+
+</html>
