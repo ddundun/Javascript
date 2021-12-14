@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Student {
+            constructor(이름, 국어, 영어, 수학) {
+                this.이름 = 이름
+                this.국어 = 국어
+                this.영어 = 영어
+                this.수학 = 수학
+            }
+            getsum() {
+                return this.국어+this.영어+this.수학
+            }
+            getavg() {
+                return this.getsum()/3
+            }
+            toString() {
+                return `${this.이름}\t${this.getsum()}점\t${this.getavg()}점\n`
+            }
+        }
+        // let abc =Student("ddd",80,90,70)
+        // abc.toString
+
+        const students = []
+        students.push(new Student('이동준',30,40,50))
+        students.push(new Student('이승훈',90,90,90))
+
+        let output = '이름\t총점\t평균\n'
+        for(const item of students) {
+            output+= item.toString()
+        }
+        console.log(output)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

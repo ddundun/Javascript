@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Student {
+            constructor(이름, 성별, 번호) {
+                this.이름 = 이름
+                this.성별 = 성별
+                this.번호 = 번호
+            }
+            toString() {
+                return `${this.이름}학생은${this.성별}학생이며${this.번호}번이다\n`
+            }
+            
+        }
+        let students = []
+
+
+        // const students = []
+        // students.push(new Student('이동준',30,40,50))
+        // students.push(new Student('이승훈',90,90,90))
+
+        // let output = '이름\t총점\t평균\n'
+        // for(const item of students) {
+        //     output+= item.toString()
+        // }
+        // console.log(output)
+
+        window.onload = () =>{
+            let putbtn = document.querySelector('#put')
+            putbtn.onclick = () => {
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="name"> <br>
+    <input type="text" id="gender"> <br>
+    <input type="text" id="number"> 
+
+    <button id ="put">학생정보 추가</button> 
+    <button id ="number_by_number">번호 순 출력</button> 
+    <button id ="print">출력하기</button> 
+    <button id = "reset">리셋하기</button>
+
+    <br>
+
+    <div id = "one">
+        <h1>d</h1>
+    </div>
+    <div id ="two">
+        <h1>d</h1>
+    </div>
+    <div id = "three">
+        <h1>d</h1>
+    </div>
+
+</body>
+
+</html>
