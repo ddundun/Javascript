@@ -40,7 +40,7 @@
             /* ul태그 안의 li태그들 */
             width: 92%;
             margin: 5px 0;
-            background-color: aqua;
+            background-color: darkgoldenrod;
             padding: 5px 10px;
             cursor: pointer;
         }
@@ -103,7 +103,32 @@
                 const boxOffiveResult = jsonObj['boxOfficeResult']
                 boxOfficeType.textContent = boxOffiveResult['boxofficeType']
                 showRange.textContent = boxOffiveResult['showRange']
-            })
+                const movieList = boxOffiveResult['dailyBoxOfficeList']
+
+                movieList.forEach(element => {
+                    const myLi = document.createElement('li') //li태그만들기
+                    const myDiv = document.createElement('div')
+                    const mh2 = document.createElement('h2')
+                    const mp1 = document.createElement('p')
+                    const mp2 = document.createElement('p')
+                    const mp3 = document.createElement('p')
+                    //영화명/개봉일/누적관객수/순위변동
+                    mh2.textContent = element['movieNm'] //제목
+                    mp1.textContent = "개봉일 :"+element['openDt']
+                    mp2.textContent = "누적관객수:"+element['audiAcc']
+                    mp3.textContent = "순위변동"+element['rankInten']
+
+                    //큰ul>li>div>h2>p3개?
+                 
+                    myLi.appendChild(myDiv)
+                    myDiv.appendChild(mh2)
+                    myDiv.appendChild(mp1)
+                    myDiv.appendChild(mp2)
+                    myDiv.appendChild(mp3)
+                    myUl.appendChild(myLi)
+                    
+                });
+            }).catch(()=> {console.log("exception")})
         })
     </script>
 </body>
