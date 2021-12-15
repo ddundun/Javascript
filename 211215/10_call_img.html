@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body id = 'root'>
+    <script type ="text/babel">
+        const imgURL1 = 'https://picsum.photos/id/1020/600/400'
+        const imgURL2 = "https://picsum.photos/id/684/600/400?blur=5"
+        const imgURL3 = "https://picsum.photos/id/1076/600/400"
+
+        const container = document.getElementById('root')
+        const name =prompt("이름이 뭐니?")
+        let component;
+        if(name =='토끼'){
+            component = <div>
+                <h1>{name}이미지입니다.</h1>
+                <img src={imgURL1}/>
+                </div>}
+        else if(name =="고양이"){
+            component = <div>
+                <h1>{name}이미지입니다.</h1>
+                <img src={imgURL2}/>
+                </div>}
+        else if(name=='개') {
+            component = <div>
+                <h1>{name}이미지입니다.</h1>
+                <img src={imgURL3}/>
+                </div>
+        }
+        else {
+            component = <h1>그런거 없다.</h1>
+        }
+        ReactDOM.render(component,container)
+    </script>
+    
+</body>
+</html>

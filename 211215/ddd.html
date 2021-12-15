@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- <img src="https://picsum.photos/id/1020/600/400" alt=""> -->
+    <script type="text/babel">
+        const name = prompt("이름?")
+        const imgURL = 'https://picsum.photos/id/1020/600/400'
+        const component = <div>
+            <h1>{name}이 나타났다!</h1>
+            <img src={imgURL}/>
+            </div>
+        const container = document.getElementById('root')
+        ReactDOM.render(component,container) 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            /*표준화 ?*/
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+            /*중앙정렬*/
+            background-color: bisque;
+        }
+
+        .boxOffice {
+            /* div 태그 */
+            width: 500px;
+            margin: 20px auto;
+            padding: 5px;
+            border: 3px dotted #ffffff
+        }
+
+        ul {
+            /* .boxOffice 안에 있음 */
+            width: 100%;
+            padding: 8px;
+            list-style-position: inside;
+            text-align: left;
+            list-style-type: none;
+        }
+
+        ul li {
+            /* ul태그 안의 li태그들 */
+            width: 92%;
+            margin: 5px 0;
+            background-color: aqua;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>영화 박스오피스 top 10</h1>
+    <p>최신 영화 박스오피스 순위</p>
+    <div class="boxOffice">
+        <h2 class="boxOfficeType"></h2>
+        <p class="showRange"></p>
+        <ul class="boxOfficeList"></ul>
+    </div>
+    <script>
+        // 첫번째 XMLHttpRequest 방식 - Old
+        // 두번째 fetch 방식 - 최신
+        // 세번쨰 $.ajax - jQuery
+        document.addEventListener('DOMContentLoaded', function () {
+            const key = "f5d157e0a5581554dc19b933fbe3625c"
+            let date = (d => new Date(d.setDate(d.getDate() - 1)))(new Date)
+            console.log(date.getFullYear())
+            console.log(date.getMonth())
+            console.log(date.getDate())
+            let year = date.getFullYear()
+            let month = date.getMonth()
+            let day = date.getDate()
+            // date.getMonth() : 0~11
+            // 1월부터 8월인 경우 01 02 03 04 05 06 07 08 09 이렇게써줘야함
+            if (Number(month) < 9) {
+                month = '0' + (Number(month) + 1)
+            } else  
+                month = Number(month) + 1
+
+            // 1일 = 0, 이 api는 어제꺼만 불러올수 있음 => +1필요x
+            if (Number(day) < 9) {
+                day = '0' + (Number(day)+1)
+            }
+
+            console.log(''+year+month+day)
+            let targetDate = ''+year+month+day
+            let apiURL = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${key}&targetDt=${targetDate}`
+            console.log(apiURL)
+            const boxOfficeType = document.querySelector('.boxOfficeType')
+            const showRange = document.querySelector('.showRange')
+            const myUl = document.querySelector('.boxOfficeList')
+
+            fetch(apiURL).then(function (response) {//예외처리
+                if (!response.ok) //response가 ok가 아닐떄
+                    throw new Error("오류발생")
+                return response.json() //이게 result
+            }).then(function (result) {
+                console.log(result)
+                const jsonObj = result // 생략해도됨
+
+                const boxOffiveResult = jsonObj['boxOfficeResult']
+                boxOfficeType.textContent = boxOffiveResult['boxofficeType']
+                showRange.textContent = boxOffiveResult['showRange']
+            })
+        })
+    </script>
+</body>
+
+</html>
